@@ -1,0 +1,18 @@
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.deps.json
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.runtimeconfig.json
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.runtimeconfig.dev.json
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.dll
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.pdb
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.csprojResolveAssemblyReference.cache
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.AssemblyInfo.cs
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.dll
+c:\Users\Satya-New\Documents\Visual Studio 2017\Projects\SampleNetCoreAPI\src\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.pdb
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.deps.json
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.runtimeconfig.json
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.runtimeconfig.dev.json
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.dll
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\bin\Debug\netcoreapp1.0\SampleNetCoreAPI.pdb
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.csprojResolveAssemblyReference.cache
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.AssemblyInfo.cs
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.dll
+C:\Users\abhirup\DockerDemos\dockr03\SampleNetCoreAPI\SampleNetCoreAPI\obj\Debug\netcoreapp1.0\SampleNetCoreAPI.pdb
