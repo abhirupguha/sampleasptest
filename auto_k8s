@@ -1,0 +1,154 @@
+#!bin/bash
+##Author: Abhirup Guha
+
+
+echo "\nThis is my interactive shell script to build, deploy, orchestrate and maintain a dotnetcore app!!"
+read -p "\nReady for the ride?! :P (Y/N):: " choice
+
+
+case "$choice" in
+
+        [Nn]) echo "That's too sad! :( ";  break;;
+
+        [Yy]) echo "Let's Start!";
+                echo "Before we start lets look at our agenda: \n"
+                        sleep 1;
+                echo "This is a list of things we would be doing in this script: \n"
+                        sleep 2;
+                echo "1. Pull our app from github \n\n2. Create a docker image for that app from a dockerfile \n"
+                        sleep 6;
+                echo "3. Would verify whether the docker image is working or not, by running a container from that DIm \n"
+                        sleep 7;
+                echo "4. Then would push the docker image to the docker repository therefore making the scope of the image as global! \n\n"
+                        sleep 7;
+                echo "5. Delete the local repository for that image \n\n6. Check whether the kubernetes engine is working or not! \n\n"
+                        sleep 7;
+                echo "7. Finally orchestrate the app using kubernetes :D \n"
+                        sleep 3;
+                echo "8. Deploy a kubernetes deployment, expose services i.e, LoadBalancer or ClusterIP, replicate the containers, check with the replicaset version and finally do a rolling u$
+                        sleep 9;
+                echo "\n \n Please do note the pre-requisites for this deployment is \n a> Docker Engine \n b> K8s engine \n c> App to be containerize in some repository for eg, github \n d> $
+                        sleep 7;
+
+                cd myapp
+                echo "\n \n Cloning web repository of the dotnet app:\n \n "
+                git clone https://github.com/abhirupguha/sampleasptest.git
+                sleep 2;
+                cd sampleasptest
+                cp ../Dockerfile .
+                echo "\n \n "
+                cat Dockerfile
+                echo "\n\nPausing for 30 seconds, make it useful!\n \n "
+                sleep 30;
+ read -p "Enter the image name you want with tag for docker repository upload ::" iname
+                echo "Will start docker build in 5seconds.. The name of the image is $name"
+                sleep 5;
+                docker build -t $iname .
+                echo "\n\n Build complete, will run a container named testapp for the image built\n\n"
+                sleep 9;
+                docker run --name testapp -d $iname
+                docker ps -n 1
+                sleep 7;
+                echo "\n\nInspecting the container\n\n"
+                docker inspect  testapp
+                read -p "Enter the container IP:" ip
+                echo "\n"
+                curl $ip/api/values
+                echo "\n"
+                echo "\nPushing the image to Docker repository for global scope!\n\n"
+                docker push $iname
+                echo "\nStopping & removing the container\n\n"
+                docker stop testapp
+                docker rm testapp
+                echo "\n\n"
+                sleep 5;
+                echo "And now the image is being deleted from the local repository\n"
+                docker rmi $iname
+                sleep 2;
+                echo "\n\n"
+                docker images
+                echo "\nDo verify the image is not present in the local repository\n"
+                sleep 5;
+#kubernetes starts
+                echo "\n\nKUBERNETES initiates::"
+                echo "\n\n"
+                echo "Running a kubernetes deployment named myapp with the image we just uploaded to the repository:"
+                echo "\n\n"
+                kubectl run myapp --image=$iname --record
+                #kubectl get all -o wide
+                echo "\n\nDeployment rollout status:\n"
+                kubectl rollout status deployment myapp
+                sleep 5;
+                kubectl get pods -o wide
+                read -p "Please enter the pod ip :" pip
+                curl $pip/api/values
+                echo "\n\n"
+                sleep 5;
+                read -p "Exposing a service for the deployment. Please specify the type. (LoadBalancer,ClusterIP,etc.)::" etype
+                kubectl expose deployment myapp --type=$etype --port=80
+                sleep 7;
+                kubectl get svc
+                kubectl describe svc myapp
+                read -p "Please enter the cluster IP to verify whether the cluster is working:" cip
+                echo "\n\n"
+                curl $pip/api/values
+                echo "\n\n"
+                echo "Lets take a look at the replica sets:"
+                echo "\n\n"
+                kubectl get rs
+                sleep 9;
+                read -p "Please enter the number of replicas you want:" rep
+                echo "\n\n"
+                kubectl scale deployment myapp --replicas=$rep
+                echo "\n\nLets take a real time look at the replicaset:\n"
+                kubectl rollout status deployment myapp
+				echo "\n\n"
+                kubectl get all -o wide
+                sleep 15;
+                echo "Deleting all the pods, to verify replicaset is working"
+                kubectl delete pods --all
+                echo "\n\n"
+                kubectl rollout status deployment myapp
+                echo "\nThe replica sets automatically took care of the deployment replication once health became poor\n\n"
+                echo "Let's give it sometime so that it can automatically updates the pods and the cluster!"
+                sleep 20;
+                echo "\n\nOk, so far so good? Lets try something new!\n"
+                sleep 5;
+                echo "\n\nI have already created another version of the same app which instead of giving value1,value2 gives value3,value4.\n"
+                sleep 30;
+                echo "\nI have a docker image of that app and will do a rolling update on the deployment\n"
+                sleep 12;
+                echo "\nDuring the rolling update phenomena, we would also check the availibility of live data in parallel"
+                sleep 7;
+                echo "\n\nYou have approximately 25 seconds before the rolling update starts!\n"
+                sleep 25;
+                echo "\nRolling Update started!\n"
+                kubectl set image deployment/myapp myapp=abhirupguha/linuxapp:demo2
+                echo "\nLets check how the pods are recreating themselves!\n "
+                kubectl rollout status deployment myapp
+                echo "\n\n"
+                echo "Lets give the replica sets some time to automatically set updated data feed!"
+                sleep 25;
+                echo "\nThat's it for today! Hope you liked it! .. :D\n"
+                sleep 5;
+                read -p "Rate the script between 0-10 (hopefully not 0) :P :" rate
+                if [ "$rate" -ge 6 ]
+                        then
+                        echo "\nPhew!"
+                        sleep 1.5;
+                        echo "\nAll these typing did pay off!! :D\n"
+                        sleep 2;
+                        echo "\nThanks for your patience!\n"
+                elif [ "$rate" -lt 6 ]
+                        then
+                        echo "\nReally?? :("
+                        sleep 2;
+                        echo "\nThat's like nightmare! :(\n"
+                        sleep 2.5;
+                        echo "\nYet, thanks for your time! :)\n"
+                fi
+                break;;
+esac
+
+
+
